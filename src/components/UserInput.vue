@@ -3,27 +3,28 @@
 </script>
 
 <template>
-    <section class=" container d-flex flex-column align-items-center">
+    <section class="container rounded p-4 d-flex flex-column align-items-center user">
         
-        <label class="h3" for="username">Enter Username:</label>
-        <input type="text" id="username" v-model="username">
         
-        <label class="h5" for="amountQ">Number of Questions:</label>
+        <label class="h3 text-white" for="username">Enter Username:</label>
+        <input  type="text" id="username" v-model="username">
+    
+        <label class="h5 text-white" for="amountQ">Number of Questions:</label>
         <input type="number" id="amountQ" min="1" v-model="number">
         
-        <p class="h5">Difficulty:</p>
+        <p class="h5 text-white">Difficulty:</p>
         <div>
-            <input class="mx-2" type="radio" id="difficulty" value="easy" v-model="difficulty">
-            <label class="me-3" for="easy">Easy</label>
+            <input class="mx-2" type="radio" id="difficulty" name="difficulty" value="easy" v-model="difficulty">
+            <label class="me-3 text-white" for="easy">Easy</label>
 
-            <input class="mx-2" type="radio" id="difficulty" value="medium" v-model="difficulty">
-            <label class="me-3" for="medium">Medium</label>
+            <input class="mx-2" type="radio" id="difficulty" name="difficulty" value="medium" v-model="difficulty">
+            <label class="me-3 text-white" for="medium">Medium</label>
 
-            <input class="mx-2" type="radio" id="difficulty" value="hard" v-model="difficulty">
-            <label for="hard">Hard</label>
+            <input class="mx-2" type="radio" id="difficulty" name="difficulty" value="hard" v-model="difficulty">
+            <label class="text-white" for="hard">Hard</label>
         </div>
         
-        <label class="h5" for="category">Category:</label>
+        <label class="h5 text-white" for="category">Category:</label>
         <select name="category" id="category" v-model="category">
             <option value="27">Animal</option>
             <option value="25">Art</option>
@@ -54,27 +55,23 @@
 
 
         
-        <p class="h5">Type of Questions:</p>
+        <p class="h5 text-white">Type of Questions:</p>
         <div>
             <input class="mx-2" type="checkbox" id="multiple" value="multiple" v-model="category">
-            <label class="me-3" for="multiple">Multiple Choice</label>
+            <label class="me-3 text-white" for="multiple">Multiple Choice</label>
 
             <input class="mx-2" type="checkbox" id="boolean" value="boolean" v-model="category">
-            <label for="boolean">True or False</label>
+            <label class="text-white" for="boolean">True or False</label>
         </div>
 
         
-            <input class="btn btn-primary rounded border-0" @:click="doSomething" type="submit" value="Confirm">
+            <input class="btn btn-primary bg-900 rounded border-0" @:click="doSomething" type="submit" value="Confirm">
         
     </section>
 </template>
 
 <style scoped>
-    .btn-primary {
-        background-color: #EF3C67;
-    }
-
-    * {
-        margin-bottom: 1rem;
+    .user {
+        background-color: #0C304A;
     }
 </style>
