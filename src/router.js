@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 import StartScreen from "./views/StartScreen.vue"
+import QuestionScreen from "./views/QuestionScreen.vue"
 
 const routes = [
     {
         // base of our path
         path: "/",
         component: StartScreen
+    },
+    {
+        // question screen path
+        path: "/question",
+        component: QuestionScreen
     }
 ];
 
