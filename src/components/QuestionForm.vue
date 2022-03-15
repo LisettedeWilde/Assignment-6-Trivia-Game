@@ -3,10 +3,6 @@ import AnswerButton from "../components/AnswerButton.vue";
 import router from "../router";
 
 defineProps({
-  questionNr: {
-    type: Number,
-    required: true,
-  },
   nrOfQuestions: {
     type: Number,
     required: true,
@@ -41,18 +37,19 @@ const handleAnswerSelect = () => {
     class="container rounded p-4 d-flex flex-column align-items-center question-form"
   >
     <div>
-      <h4>Question {{ questionNr }} of {{ nrOfQuestions }}</h4>
+      <h4>Question {{ this.i + 1 }} of {{ nrOfQuestions }}</h4>
     </div>
     <div class="d-flex justify-content-center">
       <h3>{{ question }}</h3>
     </div>
-    <div
-      v-for="a in this.answers"
-      :key="a"
-      id="answer-buttons"
-      class="btn-group-vertical"
-    >
-      <AnswerButton @onAnswerSelect="handleAnswerSelect" :answerText="a" />
+    <div class="btn-group-vertical answer-buttons-form">
+      <div
+        v-for="a in this.answers"
+        :key="a"
+        class="btn-group-vertical answer-buttons"
+      >
+        <AnswerButton @onAnswerSelect="handleAnswerSelect" :answerText="a" />
+      </div>
     </div>
   </div>
 </template>
@@ -61,17 +58,19 @@ const handleAnswerSelect = () => {
 .question-form {
   color: white;
   background-color: #0c304a;
-  width: 500px;
+  width: 900px;
 }
 
-#answer-buttons {
+.answer-buttons {
   margin-top: 20px;
-  width: 400px;
+  width: 549px;
 }
 
+.answer-buttons-form {
+  margin-bottom: 70px;
+}
 button {
   color: white;
-  width: 100%;
-  margin-bottom: 20px;
+  /* width: 100%; */
 }
 </style>
