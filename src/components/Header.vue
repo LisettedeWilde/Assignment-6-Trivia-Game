@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <header class="container-fluid header">
+    <header class="container-fluid p-3 mb-4 header">
         <h1 class="text-center text-white">Trivia Game</h1>
     </header>
 </template>
