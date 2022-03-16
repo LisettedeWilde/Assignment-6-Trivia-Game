@@ -1,8 +1,12 @@
 <script setup>
 import AnswerButton from "../components/AnswerButton.vue";
-import router from "../router";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
+  questionNr: {
+    	type: Number,
+      required: true,
+  },
   nrOfQuestions: {
     type: Number,
     required: true,
@@ -17,18 +21,26 @@ const props = defineProps({
   },
 });
 
+const router = useRouter(); 
 let i = 0;
 
+const emit = defineEmits(["onAnswerSelected"])
+// sort answers alphabetically
+props.answers[0].sort()
+
 const handleAnswerSelect = () => {
-  // store given answer (in array?)
+  emit("onAnswerSelected");
+
+
+// store given answer (in array?)
 
   // check if it's the last question
-  if (i >= props.nrOfQuestions - 1) {
-    // got to result page
-    router.push("/result");
-  } else {
-    i++;
-  }
+  // if (i >= props.nrOfQuestions - 1) {
+  //   // got to result page
+  //   router.push("/result");
+  // } else {
+  //   i++;
+  // }
 };
 </script>
 
@@ -37,14 +49,14 @@ const handleAnswerSelect = () => {
     class="container rounded p-4 d-flex flex-column align-items-center question-form"
   >
     <div>
-      <h4>Question {{ i + 1 }} of {{ nrOfQuestions }}</h4>
+      <h4>Question {{ i }} of {{ nrOfQuestions }}</h4>
     </div>
     <div class="d-flex justify-content-center">
       <h3>{{ question }}</h3>
     </div>
     <div class="btn-group-vertical answer-buttons-form">
       <div
-        v-for="a in this.answers[i]"
+        v-for="a in this.answers[0]"
         :key="a"
         class="btn-group-vertical answer-buttons"
       >

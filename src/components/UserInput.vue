@@ -2,19 +2,20 @@
 import { getUser } from "../api/user.js";
 import { getQuestions } from "../api/questions.js";
 import { ref, reactive } from "@vue/reactivity";
+import { useRouter } from "vue-router";
 
 const username = ref("");
 const number = ref();
 const difficulty = ref("");
 const category = ref();
 //const type = ref();
-
+const router = useRouter();
 
     function confirm() {
         getUser(username.value);
         const questions = getQuestions(number.value, category.value, difficulty.value);
 
-        //router.push("/welcome");
+        router.push("/question");
     }
 </script>
 
