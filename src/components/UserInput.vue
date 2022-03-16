@@ -16,7 +16,7 @@ let url = "";
         //get username
         getUser(username.value);
 
-        //if username is any omit from url
+        //if category is any omit from url
         if (category.value === "any") {
             url = `amount=${number.value}&difficulty=${difficulty.value}`;
         } else {
