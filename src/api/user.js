@@ -2,10 +2,16 @@ import { BASE_URL, API_KEY } from ".";
 
 // GET: get user by username from api
 export function getUser(username) {
-    fetch(`${BASE_URL}/trivia?username=${username}`)
+    fetch(`${BASE_URL}trivia?username=${username}`)
     .then(response => response.json())
-    .then(results => {
+    .then((results) => {
         // results will be an array of users that match the username of mega-mind.
+        if (results.length == 0) {
+          return createUser(username);
+        } else {
+          localStorage.setItem('user', results);
+          return results;
+        }
     })
     .catch(error => {
 
@@ -21,12 +27,12 @@ export function createUser(username) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      username: "the-trivia-master",
+      username: username,
       highScore: 0,
     }),
   };
 
-  fetch(`${BASE_URL}/trivia`, config)
+  fetch(`${BASE_URL}trivia`, config)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Could not create new user");
@@ -35,6 +41,8 @@ export function createUser(username) {
     })
     .then((newUser) => {
       // newUser is the new user with an id
+      localStorage.setItem('user', newUser);
+      return newUser;
     })
     .catch((error) => {
       
@@ -55,7 +63,7 @@ export function updateUser(userId, score) { // check if current score is higher 
         })
     }
 
-    fetch(`${BASE_URL}/trivia/${userId}`, config)
+    fetch(`${BASE_URL}trivia/${userId}`, config)
     .then(response => {
         if (!response.ok) {
             throw new Error('Could not update high score')

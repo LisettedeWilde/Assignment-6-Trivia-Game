@@ -1,3 +1,14 @@
+<script setup>
+    import Header from '../components/Header.vue'
+    import Input from '../components/UserInput.vue'
+</script>
+
+
 <template>
-    <h1>This is the start screen</h1>
+    <Header/>
+    <Input/>
 </template>
+
+<style scoped>
+
+</style>
