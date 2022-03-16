@@ -1,24 +1,34 @@
-<script setup>import router from '../router';
+<script setup>
+import { getUser } from "../api/user.js";
+import { getQuestions } from "../api/questions.js";
+import { ref, reactive } from "@vue/reactivity";
 
-    async function confirm() {
-        await getUser(username.value);
-        await getQuestions(number.value, category.value, difficulty.value, type.value);
+const username = ref("");
+const number = ref();
+const difficulty = ref("");
+const category = ref();
+//const type = ref();
 
-        router.push("/welcome");
+
+    function confirm() {
+        getUser(username.value);
+        const questions = getQuestions(number.value, category.value, difficulty.value);
+
+        //router.push("/welcome");
     }
 </script>
 
 <template>
-    <section class="container-sm rounded p-4 d-flex flex-column align-items-center user">
+    <section class="container-sm row-md-auto d-flex flex-column align-items-center rounded p-4 user">
         
-        
-        <label class="h3 text-white" for="username">Enter Username:</label>
-        <input  type="text" id="username" v-model="username">
+       
+        <label class="h3 row text-white" for="username">Enter Username:</label>
+        <input class="row" type="text" id="username" v-model="username">
     
-        <label class="h5 text-white" for="amountQ">Number of Questions:</label>
-        <input type="number" id="amountQ" min="1" v-model="number">
+        <label class="row h5 text-white" for="amountQ">Number of Questions:</label>
+        <input class="row" type="number" id="amountQ" min="1" v-model="number">
         
-        <p class="h5 text-white">Difficulty:</p>
+        <p class="row h5 text-white">Difficulty:</p>
         <div>
             <input class="mx-2" type="radio" id="difficulty" name="difficulty" value="easy" v-model="difficulty">
             <label class="me-3 text-white" for="easy">Easy</label>
@@ -30,8 +40,9 @@
             <label class="text-white" for="hard">Hard</label>
         </div>
         
-        <label class="h5 text-white" for="category">Category:</label>
-        <select name="category" id="category" v-model="category">
+        <label class="row h5 text-white" for="category">Category:</label>
+        <select class="row" name="category" id="category" v-model="category">
+
             <option value="27">Animal</option>
             <option value="25">Art</option>
             <option value="26">Celebrities</option>
@@ -61,7 +72,7 @@
 
 
         
-        <p class="h5 text-white">Type of Questions:</p>
+        <p class="row h5 text-white">Type of Questions:</p>
         <div>
             <input class="mx-2" type="checkbox" id="multiple" value="multiple" v-model="type">
             <label class="me-3 text-white" for="multiple">Multiple Choice</label>
@@ -71,8 +82,8 @@
         </div>
 
         
-            <button class="btn btn-primary bg-900 rounded border-0" @:click="confirm">Confirm</button>
-        
+            <button class="m-4 btn btn-primary rounded border-0" @click="confirm">Confirm</button>
+    
     </section>
 </template>
 
