@@ -2,7 +2,7 @@
 import AnswerButton from "../components/AnswerButton.vue";
 import router from "../router";
 
-defineProps({
+const props = defineProps({
   nrOfQuestions: {
     type: Number,
     required: true,
@@ -23,7 +23,7 @@ const handleAnswerSelect = () => {
   // store given answer (in array?)
 
   // check if it's the last question
-  if (i >= this.nrOfQuestions - 1) {
+  if (i >= props.nrOfQuestions - 1) {
     // got to result page
     router.push("/result");
   } else {
@@ -37,14 +37,14 @@ const handleAnswerSelect = () => {
     class="container rounded p-4 d-flex flex-column align-items-center question-form"
   >
     <div>
-      <h4>Question {{ this.i + 1 }} of {{ nrOfQuestions }}</h4>
+      <h4>Question {{ i + 1 }} of {{ nrOfQuestions }}</h4>
     </div>
     <div class="d-flex justify-content-center">
       <h3>{{ question }}</h3>
     </div>
     <div class="btn-group-vertical answer-buttons-form">
       <div
-        v-for="a in this.answers"
+        v-for="a in this.answers[i]"
         :key="a"
         class="btn-group-vertical answer-buttons"
       >

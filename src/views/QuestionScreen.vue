@@ -14,7 +14,7 @@ const questions = computed(() => store.state.questions);
 console.log(questions);
 console.log(questions.value);
 
-const answers = ["1","2","3"];
+const answers = [["1","2","3"], ["3", "6", "11284093"]];
 // PLAN: 
 
 // pass question information in QuestionForm
