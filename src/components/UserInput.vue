@@ -1,9 +1,15 @@
-<script setup>
-    
+<script setup>import router from '../router';
+
+    async function confirm() {
+        await getUser(username.value);
+        await getQuestions(number.value, category.value, difficulty.value, type.value);
+
+        router.push("/welcome");
+    }
 </script>
 
 <template>
-    <section class="container rounded p-4 d-flex flex-column align-items-center user">
+    <section class="container-sm rounded p-4 d-flex flex-column align-items-center user">
         
         
         <label class="h3 text-white" for="username">Enter Username:</label>
@@ -33,7 +39,7 @@
             <option value="10">Books</option>
             <option value="32">Cartoon & Animations</option>
             <option value="29">Comics</option>
-            <optio value="11">Films</optio>
+            <option value="11">Films</option>
             <option value="31">Japanese Anime & Manga</option>
             <option value="12">Music</option>
             <option value="13">Musicals & Theaters</option>
@@ -57,15 +63,15 @@
         
         <p class="h5 text-white">Type of Questions:</p>
         <div>
-            <input class="mx-2" type="checkbox" id="multiple" value="multiple" v-model="category">
+            <input class="mx-2" type="checkbox" id="multiple" value="multiple" v-model="type">
             <label class="me-3 text-white" for="multiple">Multiple Choice</label>
 
-            <input class="mx-2" type="checkbox" id="boolean" value="boolean" v-model="category">
+            <input class="mx-2" type="checkbox" id="boolean" value="boolean" v-model="type">
             <label class="text-white" for="boolean">True or False</label>
         </div>
 
         
-            <input class="btn btn-primary bg-900 rounded border-0" @:click="doSomething" type="submit" value="Confirm">
+            <button class="btn btn-primary bg-900 rounded border-0" @:click="confirm">Confirm</button>
         
     </section>
 </template>
@@ -74,4 +80,5 @@
     .user {
         background-color: #0C304A;
     }
+
 </style>
