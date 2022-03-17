@@ -8,6 +8,13 @@ const props = defineProps({
   answers: Array,
 });
 
+// https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 const emit = defineEmits(["onAnswerSelected"])
 
 const handleAnswerSelect = (e) => {
@@ -19,7 +26,7 @@ const handleAnswerSelect = (e) => {
   <div
     class="container rounded p-4 d-flex flex-column align-items-center question-form"
   >
-    <div>
+    <div class="mb-4">
       <h4>Question {{ props.questionNr }} of {{props.nrOfQuestions}}</h4>
     </div>
     <div class="d-flex justify-content-center">
@@ -31,7 +38,7 @@ const handleAnswerSelect = (e) => {
         :key="a"
         class="btn-group-vertical answer-buttons"
       >
-        <AnswerButton @onAnswerSelect="handleAnswerSelect($event)" :answerText="a" />
+        <AnswerButton @onAnswerSelect="handleAnswerSelect($event)" :answerText="decodeHtml(a)" />
       </div>
     </div>
   </div>
