@@ -4,23 +4,6 @@ import { useRouter } from "vue-router";
 
 const props = defineProps({
   questionProps: Object,
-  
-  // questionNr: {
-  //   	type: Number,
-  //     required: true,
-  // },
-  // nrOfQuestions: {
-  //   type: Number,
-  //   required: true,
-  // },
-  // question: {
-  //   type: String,
-  //   required: true,
-  // },
-  // answers: {
-  //   type: Array,
-  //   required: true,
-  // },
 });
 
 console.log(props.questionProps)
@@ -30,9 +13,8 @@ let i = 0;
 
 const emit = defineEmits(["onAnswerSelected"])
 // sort answers alphabetically
-// const answers = props.questionProps;
+// const answers = props.questionProps.incorrect_answers;
 // props.answers[0].sort()
-const answers = ["1", "2", "3"]
 
 const handleAnswerSelect = () => {
   emit("onAnswerSelected");
@@ -46,14 +28,14 @@ const handleAnswerSelect = () => {
     class="container rounded p-4 d-flex flex-column align-items-center question-form"
   >
     <div>
-      <h4>Question {{ i }} of {{ nrOfQuestions }}</h4>
+      <h4>Question {{ i }} of 10</h4>
     </div>
     <div class="d-flex justify-content-center">
-      <h3>{{ questionProps.question }}</h3>
+      <h3>{{ props.questionProps.question }}</h3>
     </div>
     <div class="btn-group-vertical answer-buttons-form">
       <div
-        v-for="a in this.answers"
+        v-for="a in props.questionProps.incorrect_answers"
         :key="a"
         class="btn-group-vertical answer-buttons"
       >

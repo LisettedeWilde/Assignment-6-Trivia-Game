@@ -16,11 +16,13 @@ let url = "";
         //get username
         getUser(username.value);
 
+        const baseUrl = `https://opentdb.com/api.php?`
+
         //if category is any omit from url
         if (category.value === "any") {
-            url = `amount=${number.value}&difficulty=${difficulty.value}`;
+            url = `${baseUrl}amount=${number.value}&difficulty=${difficulty.value}`;
         } else {
-            url = `amount=${number.value}&category=${category.value}&difficulty=${difficulty.value}`;
+            url = `${baseUrl}amount=${number.value}&category=${category.value}&difficulty=${difficulty.value}`;
         }
 
         //if type.value has 1 add it to url otherwise omit
@@ -28,9 +30,10 @@ let url = "";
             url = url + `&type=${type.value}`;
         }
         
-        getQuestions(url);
+        localStorage.setItem('questionUrl', url)
+        // getQuestions(url);
 
-        router.push("/questions");
+        router.push("/question");
     }
 </script>
 

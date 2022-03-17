@@ -5,14 +5,17 @@ import { reactive } from '@vue/reactivity'
 
 const questions = reactive({});
 let allQuestions = []
-const questionUrl = `https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple`
+
+// function start() {
+//   const questions = JSON.parse(localStorage.getItem('questions'))
+//   console.log(questions)
+// }
 onBeforeMount(() => {
-  fetch(questionUrl)
+  fetch(localStorage.getItem('questionUrl'))
   .then(response => response.json())
   .then(result => {
     allQuestions = result.results;
-    console.log(allQuestions)
-        questions.value = allQuestions[0];
+    questions.value = allQuestions[0];
     console.log(questions.value)
   })
 })
@@ -29,7 +32,7 @@ onBeforeMount(() => {
 
 <template>
     <!-- <QuestionForm :nrOfQuestions=10 :question="'2 + 2 = ?'" :answers=this.answers /> -->
-    <QuestionForm :questionsProps="questions.value"/>
+    <QuestionForm :questionProps="questions.value"/>
 </template>
 
 <style scoped>
