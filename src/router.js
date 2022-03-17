@@ -1,11 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import StartScreen from "./views/StartScreen.vue"
+import ResultScreen from "./views/ResultScreen.vue"
 
 const routes = [
     {
         // base of our path
         path: "/",
         component: StartScreen
+    },
+    { 
+      path: "/results",
+      component: ResultScreen
     }
 ];
 
