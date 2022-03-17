@@ -3,45 +3,42 @@ import AnswerButton from "../components/AnswerButton.vue";
 import { useRouter } from "vue-router";
 
 const props = defineProps({
-  questionNr: {
-    	type: Number,
-      required: true,
-  },
-  nrOfQuestions: {
-    type: Number,
-    required: true,
-  },
-  question: {
-    type: String,
-    required: true,
-  },
-  answers: {
-    type: Array,
-    required: true,
-  },
+  questionProps: Object,
+  
+  // questionNr: {
+  //   	type: Number,
+  //     required: true,
+  // },
+  // nrOfQuestions: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // question: {
+  //   type: String,
+  //   required: true,
+  // },
+  // answers: {
+  //   type: Array,
+  //   required: true,
+  // },
 });
+
+console.log(props.questionProps)
 
 const router = useRouter(); 
 let i = 0;
 
 const emit = defineEmits(["onAnswerSelected"])
 // sort answers alphabetically
-props.answers[0].sort()
+// const answers = props.questionProps;
+// props.answers[0].sort()
+const answers = ["1", "2", "3"]
 
 const handleAnswerSelect = () => {
   emit("onAnswerSelected");
-
-
 // store given answer (in array?)
+}
 
-  // check if it's the last question
-  // if (i >= props.nrOfQuestions - 1) {
-  //   // got to result page
-  //   router.push("/result");
-  // } else {
-  //   i++;
-  // }
-};
 </script>
 
 <template>
@@ -52,11 +49,11 @@ const handleAnswerSelect = () => {
       <h4>Question {{ i }} of {{ nrOfQuestions }}</h4>
     </div>
     <div class="d-flex justify-content-center">
-      <h3>{{ question }}</h3>
+      <h3>{{ questionProps.question }}</h3>
     </div>
     <div class="btn-group-vertical answer-buttons-form">
       <div
-        v-for="a in this.answers[0]"
+        v-for="a in this.answers"
         :key="a"
         class="btn-group-vertical answer-buttons"
       >

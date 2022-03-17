@@ -10,7 +10,7 @@ export function getQuestions(nrOfQuestions, category, difficulty) {
     .then(response => response.json())
     .then((results) => {
         // results will be an array of questions
-        localStorage.setItem('questions', results);
+        localStorage.setItem(`questions`, results);
         console.log(results);
         return results;
     })
