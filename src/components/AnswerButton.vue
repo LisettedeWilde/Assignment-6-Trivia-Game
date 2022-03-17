@@ -10,13 +10,13 @@
     const emit = defineEmits(["onAnswerSelect"])
 
     // calls event
-    const onButtonClick = () => {
-        emit("onAnswerSelect") //TODO : add method in parent class, add answer as argument to store it
+    const onButtonClick = (e) => {
+        emit("onAnswerSelect", e)
     }
 </script>
 
 <template>
-<button @click="onButtonClick" type="button" class="btn btn-info button">{{answerText}}</button>    
+<button @click="onButtonClick(answerText)" type="button" class="btn btn-info button">{{answerText}}</button>    
 </template>
 
 <style scoped>

@@ -8,17 +8,11 @@ const props = defineProps({
   answers: Array,
 });
 
-console.log(props.questionProps)
-
-let i = 0;
-
 const emit = defineEmits(["onAnswerSelected"])
 
-const handleAnswerSelect = () => {
-  emit("onAnswerSelected");
-// store given answer (in array?)
+const handleAnswerSelect = (e) => {
+  emit("onAnswerSelected", e);
 }
-
 </script>
 
 <template>
@@ -37,7 +31,7 @@ const handleAnswerSelect = () => {
         :key="a"
         class="btn-group-vertical answer-buttons"
       >
-        <AnswerButton @onAnswerSelect="handleAnswerSelect" :answerText="a" />
+        <AnswerButton @onAnswerSelect="handleAnswerSelect($event)" :answerText="a" />
       </div>
     </div>
   </div>
@@ -60,6 +54,5 @@ const handleAnswerSelect = () => {
 }
 button {
   color: white;
-  /* width: 100%; */
 }
 </style>

@@ -7,11 +7,13 @@ import { useRouter } from "vue-router";
 
 let i = 0;
 const router = useRouter();
-const question = reactive({});
 let allQuestions = [];
+const question = reactive({});
 const questionNr = reactive({});
 const nrOfQuestions = reactive({});
 const answers = reactive({});
+let givenAnswers = [];
+let score = 0;
 
 // https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it
 function decodeHtml(html) {
@@ -25,13 +27,14 @@ onBeforeMount(() => {
   fetch(localStorage.getItem("questionUrl"))
     .then((response) => response.json())
     .then((result) => {
-      // array of all questions
+      // set question number
+      questionNr.value = 1;
+      // get the array of all questions
       allQuestions = result.results;
       // total nr of questions
       nrOfQuestions.value = allQuestions.length;
       // first question
       question.value = decodeHtml(allQuestions[0].question);
-      questionNr.value = 1;
       // store answers in array
       answers.value = allQuestions[0].incorrect_answers;
       answers.value.push(allQuestions[0].correct_answer);
@@ -39,21 +42,39 @@ onBeforeMount(() => {
     });
 });
 
-function handleAnswerSelected() {
+function handleAnswerSelected(answerText) {
+  // store selected answer in array
+  givenAnswers.push(answerText);
+
+  // check if given answer equals correct answer and update score accordingly
+  if (allQuestions[i].correct_answer === answerText) {
+    score++;
+  }
+
+  // update question nr
   i++;
   questionNr.value = i + 1;
-  console.log("i : " + i);
+  
   // check if i === nrOfQuestions
   if (i === nrOfQuestions.value) {
+    // send given answers to local storage
+    localStorage.setItem('givenAnswers', givenAnswers)
+ 
+    // send score to local storage
+    localStorage.setItem('score', score)
+
+    // go to results page
     router.push("/result");
-  } else {
+  }
+  // get next question
+  else {
     fetch(localStorage.getItem("questionUrl"))
       .then((response) => response.json())
       .then((result) => {
+        // get the array of all questions
         allQuestions = result.results;
         // ith question
         question.value = decodeHtml(allQuestions[i].question);
-        console.log(allQuestions[i]);
         // store answers in array
         answers.value = allQuestions[i].incorrect_answers;
         answers.value.push(allQuestions[i].correct_answer);
@@ -64,9 +85,9 @@ function handleAnswerSelected() {
 </script>
 
 <template>
-  <!-- <Header /> -->
+  <Header />
   <QuestionForm
-    @onAnswerSelected="handleAnswerSelected"
+    @onAnswerSelected="handleAnswerSelected($event)"
     :nrOfQuestions="nrOfQuestions.value"
     :questionNr="questionNr.value"
     :answers="answers.value"
