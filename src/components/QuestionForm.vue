@@ -1,20 +1,18 @@
 <script setup>
 import AnswerButton from "../components/AnswerButton.vue";
-import { useRouter } from "vue-router";
 
 const props = defineProps({
-  questionProps: Object,
+  question: String,
+  nrOfQuestions: Number,
+  questionNr: Number,
+  answers: Array,
 });
 
 console.log(props.questionProps)
 
-const router = useRouter(); 
 let i = 0;
 
 const emit = defineEmits(["onAnswerSelected"])
-// sort answers alphabetically
-// const answers = props.questionProps.incorrect_answers;
-// props.answers[0].sort()
 
 const handleAnswerSelect = () => {
   emit("onAnswerSelected");
@@ -28,14 +26,14 @@ const handleAnswerSelect = () => {
     class="container rounded p-4 d-flex flex-column align-items-center question-form"
   >
     <div>
-      <h4>Question {{ i }} of 10</h4>
+      <h4>Question {{ props.questionNr }} of {{props.nrOfQuestions}}</h4>
     </div>
     <div class="d-flex justify-content-center">
-      <h3>{{ props.questionProps.question }}</h3>
+      <h3>{{ props.question }}</h3>
     </div>
     <div class="btn-group-vertical answer-buttons-form">
       <div
-        v-for="a in props.questionProps.incorrect_answers"
+        v-for="a in props.answers"
         :key="a"
         class="btn-group-vertical answer-buttons"
       >
