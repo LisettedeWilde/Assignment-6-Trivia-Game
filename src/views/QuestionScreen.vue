@@ -1,6 +1,7 @@
 <script setup>
 import Header from "../components/Header.vue";
 import QuestionForm from "../components/QuestionForm.vue";
+import decodeHtml from "../utils/htmlDecoder";
 import { onBeforeMount } from "vue";
 import { reactive, ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
@@ -14,13 +15,6 @@ const nrOfQuestions = reactive({});
 const answers = reactive({});
 let givenAnswers = [];
 let score = 0;
-
-// https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it
-function decodeHtml(html) {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-}
 
 onBeforeMount(() => {
   // fetch questions from api

@@ -1,5 +1,6 @@
 <script setup>
 import AnswerButton from "../components/AnswerButton.vue";
+import decodeHtml from "../utils/htmlDecoder.js"
 
 const props = defineProps({
   question: String,
@@ -8,12 +9,7 @@ const props = defineProps({
   answers: Array,
 });
 
-// https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it
-function decodeHtml(html) {
-    var txt = document.createElement("textarea");
-    txt.innerHTML = html;
-    return txt.value;
-}
+
 
 const emit = defineEmits(["onAnswerSelected"])
 
