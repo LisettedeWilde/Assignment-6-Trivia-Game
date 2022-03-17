@@ -13,6 +13,13 @@ const questionNr = reactive({});
 const nrOfQuestions = reactive({});
 const answers = reactive({});
 
+// https://stackoverflow.com/questions/7394748/whats-the-right-way-to-decode-a-string-that-has-special-html-entities-in-it
+function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 onBeforeMount(() => {
   // fetch questions from api
   fetch(localStorage.getItem("questionUrl"))
@@ -23,10 +30,7 @@ onBeforeMount(() => {
       // total nr of questions
       nrOfQuestions.value = allQuestions.length;
       // first question
-      question.value = allQuestions[0].question;
-      console.log("question : " + allQuestions[0]);
-      console.log(allQuestions.length);
-
+      question.value = decodeHtml(allQuestions[0].question);
       questionNr.value = 1;
       // store answers in array
       answers.value = allQuestions[0].incorrect_answers;
@@ -48,7 +52,7 @@ function handleAnswerSelected() {
       .then((result) => {
         allQuestions = result.results;
         // ith question
-        question.value = allQuestions[i].question;
+        question.value = decodeHtml(allQuestions[i].question);
         console.log(allQuestions[i]);
         // store answers in array
         answers.value = allQuestions[i].incorrect_answers;
