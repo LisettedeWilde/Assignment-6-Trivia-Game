@@ -1,5 +1,4 @@
 # Assignment 5: Trivia Game with Vue.js
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://savannah-borst.github.io/Assignment_Computer_Store/)
 ## Assignment
 The assignment was to build a Single Page Application trivia game with Vue.js 3. We had to make use of the TriviaAPI(https://opentdb.com/api_config.php) for the questions.
 To keep track of users and highscore we had to use https://github.com/dewald-els/noroff-assignment-api
