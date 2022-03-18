@@ -11,6 +11,6 @@ export function getQuestions(url) {
         return results;
     })
     .catch(error => {
-
+        return [ error.message, []]
     })
 }
