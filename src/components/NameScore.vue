@@ -21,7 +21,7 @@
 
 
 <template>
-    <ShowNameScore :nameProp="username"/>
+    <ShowNameScore :nameProp="username.value"/>
 </template>
 
 <style scoped>
