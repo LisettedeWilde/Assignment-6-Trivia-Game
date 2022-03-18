@@ -1,7 +1,28 @@
-# Vue 3 + Vite
+# Assignment 5: Trivia Game with Vue.js
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://savannah-borst.github.io/Assignment_Computer_Store/)
+## Assignment
+The assignment was to build a Single Page Application trivia game with Vue.js 3. We had to make use of the TriviaAPI(https://opentdb.com/api_config.php) for the questions.
+To keep track of users and highscore we had to use https://github.com/dewald-els/noroff-assignment-api
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+We had to make at least 3 different pages: a start, questions and results page.
+## How To Use
+Go to the following website: https://savannah-borst.github.io/Assignment_Computer_Store/
 
-## Recommended IDE Setup
+Make up a username and select the properties you want your trivia to have and click start.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## Future
+Future work may include:
+- A welcome (back) page once the user has clicked confirm on the start page.
+- Changing some of the local storage to more VueX implementations
+
+## Built With
+[Visual Studio Code](https://code.visualstudio.com/)
+[Vue.js](https://vuejs.org/)
+[Bootstrap 5](https://getbootstrap.com/)
+
+## Credits
+[Lisette de Wilde](https://github.com/LisettedeWilde)
+[Savannah Borst](https://github.com/savannah-borst)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
