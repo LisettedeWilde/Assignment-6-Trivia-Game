@@ -41,7 +41,7 @@ export function createUser(username) {
     })
     .then((newUser) => {
       // newUser is the new user with an id
-      localStorage.setItem('user', newUser);
+      localStorage.setItem('user', JSON.stringify(newUser));
       return newUser;
     })
     .catch((error) => {

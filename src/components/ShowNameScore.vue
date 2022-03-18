@@ -1,16 +1,28 @@
 <script setup>
-    import { onBeforeMount, reactive } from "vue";
-import { useRouter } from "vue-router";
+    import { onBeforeMount } from "vue";
+    import { useRouter } from "vue-router";
+    import { updateUser } from "../api/user";
 
     const router = useRouter();
     const props = defineProps({ nameProp: Object});
     const score = localStorage.getItem('score');
+    const userId = props.nameProp.id;
+    const highScore = props.nameProp.highScore;
+    console.log(userId);
+
+// onBeforeMount(() => {
+//  if (score > highScore) {
+//             updateUser(userId, score);
+//         }
+// });
 
     function backToStart() {
+        
         router.push("/");
     }
 
     function newQuiz() {
+
         router.push("/question");
     }
 </script>
