@@ -49,7 +49,7 @@ const onButtonClick = (e) => {
 }
 
 .btn {
-  width: 549px;
+  width: 500px;
   background-color: #2DC0CC;
 }
 

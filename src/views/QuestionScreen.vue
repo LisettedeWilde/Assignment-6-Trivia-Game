@@ -2,23 +2,28 @@
 import Header from "../components/Header.vue";
 import QuestionForm from "../components/QuestionForm.vue";
 import decodeHtml from "../utils/htmlDecoder";
+import { computed } from "@vue/runtime-core";
 import { onBeforeMount } from "vue";
 import { reactive, ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 let i = 0;
 const router = useRouter();
+const store = useStore();
 let allQuestions = [];
 const question = reactive({});
 const questionNr = reactive({});
 const nrOfQuestions = reactive({});
+const questionURL = computed(()=> store.state.url)
 const answers = reactive({});
+
 let givenAnswers = [];
 let score = 0;
 
 onBeforeMount(() => {
   // fetch questions from api
-  fetch(localStorage.getItem("questionUrl"))
+  fetch(questionURL.value)
     .then((response) => response.json())
     .then((result) => {
       // set question number
@@ -56,7 +61,7 @@ function handleAnswerSelected(answerText) {
     // send given answers to local storage
     localStorage.setItem('givenAnswers', JSON.stringify(givenAnswers))
     // send score to local storage
-    localStorage.setItem('score', score)
+    store.commit('setScore', score);
     // go to results page
     router.push("/results");
   }

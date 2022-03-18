@@ -4,19 +4,22 @@ import { getQuestions } from "./api/questions";
 
  const BASE_URL = "https://lw-noroff-api.herokuapp.com/";
  const API_KEY = "tOCLBMPb5U6zbvaXbW7PeA==";
- const BASE_URL_QUESTIONS = "https://opentdb.com/api.php?";
 
 const store =  createStore({
     state: {
-        questions: [],
-        user:[]
+        url: "",
+        user:[],
+        score: 0,
     },
     mutations: {
-        setQuestions: (state, questions) => {
-            state.questions = questions
+        setURL: (state, payload) => {
+            state.url = payload;
         },
         setUser: (state, payload) => {
             state.user = payload;
+        },
+        setScore: (state, payload) => {
+            state.score =  payload;
         }
     },
     actions: {

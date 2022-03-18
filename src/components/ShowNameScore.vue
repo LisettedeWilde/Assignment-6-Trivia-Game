@@ -6,17 +6,17 @@
 
     const store = useStore();
     const router = useRouter();
-    const score = localStorage.getItem('score');
+    const score = computed(()=> store.state.score);
     const user = computed(()=> store.state.user);
 
-    function backToStart(userId, highScore) {
+    function backToStart(userId, highScore, score) {
         if (score > highScore) {
             updateUser(userId, score);
         }
         router.push("/");
     }
 
-    function newQuiz(userId, highScore) {
+    function newQuiz(userId, highScore, score) {
         if (score > highScore) {
             updateUser(userId, score);
         }
@@ -31,8 +31,8 @@
         <h4 class="text-white">Score: {{score}}</h4>
 
         <div>
-            <button @click="backToStart(user[0].id, user[0].highScore)" class="mt-5 mb-3 me-4 ps-4 pe-4 btn btn-primary rounded border-0" >Back to Start</button>
-            <button @click="newQuiz(user[0].id, user[0].highScore)" class="mt-5 mb-3 ps-4 pe-4 btn btn-primary rounded border-0">New Quiz</button>
+            <button @click="backToStart(user[0].id, user[0].highScore, score)" class="mt-5 mb-3 me-4 ps-4 pe-4 btn btn-primary rounded border-0" >Back to Start</button>
+            <button @click="newQuiz(user[0].id, user[0].highScore, score)" class="mt-5 mb-3 ps-4 pe-4 btn btn-primary rounded border-0">New Quiz</button>
         </div>
     </section>
 

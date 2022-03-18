@@ -20,9 +20,12 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="wrapper container-sm rounded p-4 results">
     <div v-for="a in nrArray.value" :key="a">
       <ShowQuestionResult :number="a" />
     </div>
   </div>
 </template>
+
+<style scoped>
+</style>

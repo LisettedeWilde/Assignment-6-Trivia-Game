@@ -33,8 +33,7 @@ let url = "";
         }
         
         store.dispatch('getUser', username.value)
-        //localStorage.setItem('questionUrl', url)
-        // getQuestions(url);
+        store.commit('setURL', url);
 
         router.push("/question");
     }
