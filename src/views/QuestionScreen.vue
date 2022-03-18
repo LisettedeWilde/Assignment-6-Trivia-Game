@@ -25,7 +25,6 @@ onBeforeMount(() => {
       questionNr.value = 1;
       // get the array of all questions
       allQuestions = result.results;
-      console.log(allQuestions)
       // total nr of questions
       nrOfQuestions.value = allQuestions.length;
       // first question
@@ -52,13 +51,12 @@ function handleAnswerSelected(answerText) {
   
   // check if i === nrOfQuestions
   if (i === nrOfQuestions.value) {
+    // send all questions to local storage
     localStorage.setItem('allQuestions', JSON.stringify(allQuestions))
     // send given answers to local storage
     localStorage.setItem('givenAnswers', JSON.stringify(givenAnswers))
-  
     // send score to local storage
     localStorage.setItem('score', score)
-
     // go to results page
     router.push("/results");
   }
