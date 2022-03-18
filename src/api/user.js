@@ -59,7 +59,7 @@ export function updateUser(userId, score) { // check if current score is higher 
         },
         body: JSON.stringify({
             // Provide new highScore to add to user with id 1
-            highScore: 100  
+            highScore: score  
         })
     }
 

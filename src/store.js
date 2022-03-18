@@ -1,8 +1,12 @@
 import { createStore } from "vuex";
+//import { BASE_URL, API_KEY } from "./api/index.js";
 import { getQuestions } from "./api/questions";
 
+ const BASE_URL = "https://lw-noroff-api.herokuapp.com/";
+ const API_KEY = "tOCLBMPb5U6zbvaXbW7PeA==";
+ const BASE_URL_QUESTIONS = "https://opentdb.com/api.php?";
 
-export default createStore({
+const store =  createStore({
     state: {
         questions: [],
         user:[]
@@ -32,13 +36,14 @@ export default createStore({
         },
 
         //get user
-        async getUser({commit, dispatch}, name) {
+        async getUser({commit, dispatch}, username) {
+            
             fetch(`${BASE_URL}trivia?username=${username}`)
             .then(response => response.json())
             .then((results) => {
                 // results will be an array of users that match the username of mega-mind.
                 if (results.length == 0) {
-                  dispatch('createUser', name);
+                  dispatch('createUser', username);
                 } else {
                   commit('setUser', results);
                 }
@@ -49,7 +54,7 @@ export default createStore({
         },
 
         //if user does not exist create user
-        async createUser({commit}, name) {
+        async createUser({commit}, username) {
             const config = {
               method: "POST",
               headers: {
@@ -79,3 +84,5 @@ export default createStore({
           }
     }
 })
+
+export default store;
