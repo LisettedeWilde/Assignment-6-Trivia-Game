@@ -6,11 +6,11 @@
     const username = reactive({})
 
     onBeforeMount(()=>{
-        username.value = JSON.parse(localStorage.getItem('user'));
+        username.value = localStorage.getItem('user');
     })
 
-    console.log(typeof(username.value));
-    console.log(username.value);
+    console.log(typeof(username.value)); // return undefined
+    console.log(username.value); // returns undefined
     
 
 //btn for back to start
