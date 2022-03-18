@@ -4,16 +4,14 @@
     import ShowNameScore from './ShowNameScore.vue';
 
     const username = reactive({})
-    
 
     onBeforeMount(()=>{
-        fetch(localStorage.getItem('user'))
-        .then(response => response.json())
-        .then(result => username.value = result);
-    });
+        username.value = JSON.parse(localStorage.getItem('user'));
+    })
 
-
-//console.log(username.value);
+    console.log(typeof(username.value));
+    console.log(username.value);
+    
 
 //btn for back to start
 
@@ -23,7 +21,7 @@
 
 
 <template>
-    <ShowNameScore :nameProp="username.value"/>
+    <ShowNameScore :nameProp="username"/>
 </template>
 
 <style scoped>

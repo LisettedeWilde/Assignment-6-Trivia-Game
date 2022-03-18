@@ -8,7 +8,6 @@ export function getQuestions(url) {
     .then((results) => {
         // results will be an array of questions
         localStorage.setItem('questions', results);
-        console.log(results);
         return results;
     })
     .catch(error => {

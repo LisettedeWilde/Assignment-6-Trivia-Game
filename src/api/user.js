@@ -9,7 +9,7 @@ export function getUser(username) {
         if (results.length == 0) {
           return createUser(username);
         } else {
-          localStorage.setItem('user', results);
+          localStorage.setItem('user', JSON.stringify(results));
           return results;
         }
     })
