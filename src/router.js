@@ -3,6 +3,7 @@ import StartScreen from "./views/StartScreen.vue"
 import ResultScreen from "./views/ResultScreen.vue"
 import QuestionScreen from "./views/QuestionScreen.vue"
 
+
 const routes = [
     {
         // base of our path

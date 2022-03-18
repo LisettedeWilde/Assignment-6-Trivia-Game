@@ -9,7 +9,7 @@ export function getUser(username) {
         if (results.length == 0) {
           return createUser(username);
         } else {
-          localStorage.setItem('user', results);
+          localStorage.setItem('user', JSON.stringify(results));
           return results;
         }
     })
@@ -41,7 +41,7 @@ export function createUser(username) {
     })
     .then((newUser) => {
       // newUser is the new user with an id
-      localStorage.setItem('user', newUser);
+      localStorage.setItem('user', JSON.stringify(newUser));
       return newUser;
     })
     .catch((error) => {
@@ -59,7 +59,7 @@ export function updateUser(userId, score) { // check if current score is higher 
         },
         body: JSON.stringify({
             // Provide new highScore to add to user with id 1
-            highScore: 100  
+            highScore: score  
         })
     }
 

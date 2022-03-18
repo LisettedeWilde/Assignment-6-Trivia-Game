@@ -4,18 +4,14 @@ import { reactive } from "@vue/reactivity";
 import ShowNameScore from "./ShowNameScore.vue";
 import ShowQuestionResults from "./ShowQuestionResults.vue";
 
-const username = reactive({});
 
-onBeforeMount(() => {
-  username.value = localStorage.getItem("user");
-});
+    const username = reactive({});
 
-console.log(typeof username.value); // return undefined
-console.log(username.value); // returns undefined
-
-//btn for back to start
-
-//btn to restart quiz with same settings
+    onBeforeMount(()=>{
+        let storedUser = JSON.parse(localStorage.getItem('user'));
+        username.value = storedUser[0];
+    });
+    
 </script>
 
 <template>

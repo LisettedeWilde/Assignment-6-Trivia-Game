@@ -3,18 +3,20 @@ import { getUser } from "../api/user.js";
 import { getQuestions } from "../api/questions.js";
 import { ref, reactive } from "@vue/reactivity";
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
+const store = useStore();
 const router = useRouter();
 const username = ref("");
 const number = ref("");
 const difficulty = ref("");
-const category = ref("");
+const category = ref("any");
 const type = ref([]);
 let url = "";
 
     function confirm() {
         //get username
-        getUser(username.value);
+        //getUser(username.value);
 
         const baseUrl = `https://opentdb.com/api.php?`
 
@@ -30,7 +32,8 @@ let url = "";
             url = url + `&type=${type.value}`;
         }
         
-        localStorage.setItem('questionUrl', url)
+        store.dispatch('getUser', username.value)
+        //localStorage.setItem('questionUrl', url)
         // getQuestions(url);
 
         router.push("/question");
