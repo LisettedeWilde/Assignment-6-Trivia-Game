@@ -27,11 +27,11 @@ const onButtonClick = (e) => {
 
 <style scoped>
 .btn {
-  background-color: #ef3c67;
+  background-color: #2DC0CC;
 }
 
 .btn:hover {
-  background-color: #d81b47;
+  background-color: #ef3c67;
 }
 .button {
   max-width: 100%;

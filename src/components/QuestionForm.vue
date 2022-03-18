@@ -19,8 +19,8 @@ const handleAnswerSelect = (e) => {
 </script>
 
 <template>
-  <div
-    class="container rounded p-4 d-flex flex-column align-items-center question-form"
+  <section
+    class="container text-white rounded pt-4 pb-5 d-flex flex-column align-items-center question-form"
   >
     <div class="mb-4">
       <h4>Question {{ props.questionNr }} of {{props.nrOfQuestions}}</h4>
@@ -28,34 +28,30 @@ const handleAnswerSelect = (e) => {
     <div class="d-flex justify-content-center">
       <h3>{{ props.question }}</h3>
     </div>
-    <div class="btn-group-vertical answer-buttons-form">
-      <div
+    <div class="btn-group-vertical text-white answer-buttons-form">
+      <button
         v-for="a in props.answers"
         :key="a"
-        class="btn-group-vertical answer-buttons"
+        class="btn-group-vertical answer-buttons mt-4"
       >
         <AnswerButton @onAnswerSelect="handleAnswerSelect($event)" :answerText="decodeHtml(a)" />
-      </div>
+      </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
 .question-form {
-  color: white;
   background-color: #0c304a;
-  width: 900px;
 }
 
 .answer-buttons {
-  margin-top: 20px;
   width: 549px;
+  background-color: #2DC0CC;
 }
 
-.answer-buttons-form {
-  margin-bottom: 70px;
+.answer-buttons:hover {
+  background-color: #EF3C67;
 }
-button {
-  color: white;
-}
+
 </style>

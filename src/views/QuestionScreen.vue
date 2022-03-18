@@ -58,7 +58,7 @@ function handleAnswerSelected(answerText) {
     localStorage.setItem('score', score)
 
     // go to results page
-    router.push("/result");
+    router.push("/results");
   }
   // get next question
   else {
