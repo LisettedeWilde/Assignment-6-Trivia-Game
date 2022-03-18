@@ -17,11 +17,14 @@ Future work may include:
 
 ## Built With
 [Visual Studio Code](https://code.visualstudio.com/)
+
 [Vue.js](https://vuejs.org/)
+
 [Bootstrap 5](https://getbootstrap.com/)
 
 ## Credits
 [Lisette de Wilde](https://github.com/LisettedeWilde)
+
 [Savannah Borst](https://github.com/savannah-borst)
 
 ## License
