@@ -5,7 +5,7 @@ To keep track of users and highscore we had to use an other [API](https://github
 
 We had to make at least 3 different pages: a start, questions and results page.
 ## How To Use
-Go to the following website: https://savannah-borst.github.io/Assignment_Computer_Store/
+Go to the following website: insert website
 
 Make up a username and select the properties you want your trivia to have and click start.
 
