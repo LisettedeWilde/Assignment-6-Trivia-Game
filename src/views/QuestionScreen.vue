@@ -47,7 +47,7 @@ function handleAnswerSelected(answerText) {
 
   // check if given answer equals correct answer and update score accordingly
   if (allQuestions[i].correct_answer === answerText) {
-    score++;
+    score += 10;
   }
 
   // update question nr

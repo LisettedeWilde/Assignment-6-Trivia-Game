@@ -6,10 +6,6 @@ const props = defineProps({
   nrOfQuestions: Number,
   questionNr: Number,
   answers: Array,
-  answerText: {
-    type: String,
-    required: true,
-  },
 });
 
 // event when button gets clicked
