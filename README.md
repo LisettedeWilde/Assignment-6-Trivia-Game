@@ -1,12 +1,12 @@
 # Assignment 5: Trivia Game with Vue.js
-[![web](https://img.shields.io/static/v1?logo=heroku&message=Online&label=Heroku&color=430098)](https://dashboard.heroku.com/apps/whispering-plains-78258)
+[![web](https://img.shields.io/static/v1?logo=heroku&message=Online&label=Heroku&color=430098)](https://whispering-plains-78258.herokuapp.com/)
 ## Assignment
 The assignment was to build a Single Page Application trivia game with Vue.js 3. We had to make use of the [Trivia API](https://opentdb.com/api_config.php) for the questions.
 To keep track of users and highscore we had to use an other [API](https://github.com/dewald-els/noroff-assignment-api) which Noroff made for easy use in our assignments.
 
 We had to make at least 3 different pages: a start, questions and results page.
 ## How To Use
-Go to the following [website](https://dashboard.heroku.com/apps/whispering-plains-78258)
+Go to the following [website](https://whispering-plains-78258.herokuapp.com/)
 
 Make up a username and select the properties you want your trivia to have and click start.
 
