@@ -1,12 +1,14 @@
 <script setup>
     import Header from '../components/Header.vue'
-    import NameScore from '../components/NameScore.vue'
+    import ShowNameScore from '../components/ShowNameScore.vue'
+    import ShowQuestionResults from "../components/ShowQuestionResults.vue";
 </script>
 
 
 <template>
     <Header/>
-    <NameScore/>
+    <ShowNameScore/>
+    <ShowQuestionResults />
 </template>
 
 <style scoped>
